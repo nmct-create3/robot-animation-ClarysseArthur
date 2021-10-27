@@ -32,6 +32,7 @@ html {
   line-height: 1.5;
   font-family: sans-serif;
   box-sizing: border-box;
+  background-color: var(--global-html-backgroundColor);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -43,6 +44,10 @@ html {
 }
 
 body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /*
@@ -133,10 +138,40 @@ body {
 */
 
 .c-robot {
+  max-width: 400px;
+  fill: var(--global-color-front);
 }
 
 .c-robot__shadow {
+  opacity: 0.1;
+  fill: var(--c-robot_shadow, black);
 }
+
+#Robot{
+  animation: robotHover 0.75s ease-in-out infinite alternate;
+}
+
+#Shadow{
+  animation: shadowPulse 0.75s ease-in-out infinite alternate;
+  transform-origin: 50% 100%;
+}
+
+@keyframes shadowPulse{
+  100%{
+    transform: scale(0.75);
+  }
+}
+
+@keyframes robotHover{
+  0%{
+    transform: translateY(2%);
+  }
+  100%{
+    transform: translateY(-2%);
+  }
+}
+
+
 
 
 /*
