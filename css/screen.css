@@ -10,7 +10,6 @@
   /* Global colors */
   --global-color-back: #6dbedf;
   --global-color-front: white;
-
   /* global page settings */
   --global-html-color: var(--global-color-front);
   --global-html-backgroundColor: var(--global-color-back);
@@ -37,9 +36,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   box-sizing: inherit;
 }
 
@@ -48,6 +45,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 /*
@@ -96,18 +94,14 @@ body {
   width: auto;
   overflow: visible;
   background: transparent;
-
   /* inherit font & color from ancestor */
   color: inherit;
   font: inherit;
-
   /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
   line-height: normal;
-
   /* Corrects font smoothing for webkit */
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
-
   /* Corrects inability to style clickable `input` types in iOS */
   -webkit-appearance: none;
 }
@@ -147,32 +141,66 @@ body {
   fill: var(--c-robot_shadow, black);
 }
 
-#Robot{
+.c-css #Robot {
   animation: robotHover 0.75s ease-in-out infinite alternate;
 }
 
-#Shadow{
+.c-css #Shadow {
   animation: shadowPulse 0.75s ease-in-out infinite alternate;
   transform-origin: 50% 100%;
 }
 
-@keyframes shadowPulse{
-  100%{
+@keyframes shadowPulse {
+  100% {
     transform: scale(0.75);
   }
 }
 
-@keyframes robotHover{
-  0%{
+@keyframes robotHover {
+  0% {
     transform: translateY(2%);
   }
-  100%{
+  100% {
     transform: translateY(-2%);
   }
 }
 
+.c-controls {
+  display: flex;
+  align-items: center;
+  color: white;
+  margin-top: 10px;
+}
 
+.c-controls__button--pause {
+  padding: 20px;
+  margin-right: 20px;
+  border-radius: 100% !important;
+  background-color: #3bafdd;
+  transition: 0.1s ease-in-out;
+}
 
+.c-controls__button--pause:active {
+  transform: scale(0.85);
+}
+
+.c-controls__radio {
+  display: none;
+}
+
+.c-controls__button {
+  padding: 15px;
+  border-radius: 15px;
+  transition: 0.1s ease-in-out;
+}
+
+.c-controls__button:active {
+  transform: scale(0.85);
+}
+
+.c-controls__list {
+  display: flex;
+}
 
 /*
     Component: Controls
@@ -181,6 +209,10 @@ body {
 /*------------------------------------*\
 #UTILITIES
 \*------------------------------------*/
+
+.u-constrols__button {
+  background-color: #3bafdd;
+}
 
 /*------------------------------------*\
 #MEDIA
@@ -194,9 +226,7 @@ body {
 */
 
 @media print {
-  *,
-  *:before,
-  *:after {
+  *, *:before, *:after {
     background: transparent !important;
     color: #000 !important;
     /* Black prints faster:
@@ -204,8 +234,7 @@ body {
     box-shadow: none !important;
     text-shadow: none !important;
   }
-  a,
-  a:visited {
+  a, a:visited {
     text-decoration: underline;
   }
   a[href]:after {
@@ -218,15 +247,13 @@ body {
     * Don't show links that are fragment identifiers,
     * or use the `javascript:` pseudo protocol
     */
-  a[href^='#']:after,
-  a[href^='javascript:']:after {
+  a[href^='#']:after, a[href^='javascript:']:after {
     content: '';
   }
   pre {
     white-space: pre-wrap !important;
   }
-  pre,
-  blockquote {
+  pre, blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
@@ -237,18 +264,14 @@ body {
   thead {
     display: table-header-group;
   }
-  tr,
-  img {
+  tr, img {
     page-break-inside: avoid;
   }
-  p,
-  h2,
-  h3 {
+  p, h2, h3 {
     orphans: 3;
     widows: 3;
   }
-  h2,
-  h3 {
+  h2, h3 {
     page-break-after: avoid;
   }
 }
